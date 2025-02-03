@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  partner-db:
+    restart: always
+    image: postgres:15-alpine
+    container_name: partner-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-volume:/var/lib/postgres/data
+
+volumes:
+  postgres-volume:
