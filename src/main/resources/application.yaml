@@ -4,3 +4,15 @@ server:
 spring:
   application:
     name: api-recantocity
+  datasource:
+    url: jdbc:postgresql://localhost:5432/partner_database
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
