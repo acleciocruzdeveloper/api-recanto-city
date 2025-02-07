@@ -1,0 +1,29 @@
+name: Criar PR Automático
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+
+jobs:
+  create-pr:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Criar Pull Request para develop
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: develop
+          base: develop
+          title: "Merge automático da feature para develop"
+          body: "Este PR foi gerado automaticamente pela pipeline."
+          labels: "automated-pr"
+          draft: false
