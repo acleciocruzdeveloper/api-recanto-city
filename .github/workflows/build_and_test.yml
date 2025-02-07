@@ -1,14 +1,11 @@
-name: Build & Deploy
+name: Build
 
 on:
-  workflow_run:
-    workflows: ["Criar Pull Request"]
-    types:
-      - completed
+  push:
+    branches: [ "feature/**" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -51,11 +48,3 @@ jobs:
 
       - name: Build with Gradlew Wrapper
         run: ./gradlew test
-
-
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - actions/checkout@v4
