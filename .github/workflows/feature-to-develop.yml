@@ -1,7 +1,8 @@
 name: Java CI with Gradle
 
 on:
-  push:
+  push: ["feature/**"]
+  pull-request: "develop"
 
 jobs:
   build:
