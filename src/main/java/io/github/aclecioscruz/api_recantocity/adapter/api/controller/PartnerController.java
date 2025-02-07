@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -19,7 +18,7 @@ public class PartnerController {
 
     @GetMapping
     ResponseEntity<List<PartnerDTO>> getAllPartners() {
-        List<PartnerDTO> partnerDTOList = Arrays.asList(new PartnerDTO(
+        List<PartnerDTO> partnerDTOList = List.of(new PartnerDTO(
                 1L, "Meu Hamburguer", "(00) 00000-0000"));
         LOG.info("partner list {}", partnerDTOList);
         return ResponseEntity.ok().body(partnerDTOList);
