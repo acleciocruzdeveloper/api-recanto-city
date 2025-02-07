@@ -1,30 +1,14 @@
 name: Criar Pull Request
 
 on:
-  workflow_run:
-    workflows: ["CI/CD Pipeline"]
-    types:
-      - completed
+  pull_request:
+    branch: [develop]
 
 jobs:
-  create-pr:
-    if: github.event.workflow_run.conclusion == 'success'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
 
-    steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v4
-
-      - name: Criar Pull Request para develop
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: ${{ github.event.workflow_run.head_branch }}  # Usa a branch que iniciou o CI/CD
-          base: develop
-          title: "Merge automático da feature para develop"
-          body: "Este PR foi gerado automaticamente pela pipeline."
-          labels: "automated-pr"
-          draft: false
-          token: ${{ secrets.GH_TOKEN }}
+  test:
+    name: Test
+    uses: ./.github/workflows/test.yml
