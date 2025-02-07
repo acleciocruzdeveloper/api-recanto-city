@@ -21,7 +21,7 @@ jobs:
       - name: Criar Pull Request para develop
         uses: peter-evans/create-pull-request@v5
         with:
-          branch: ${{ github.ref_name }}
+          branch: ${{ github.event.workflow_run.head_branch }}  # Usa a branch que iniciou o CI/CD
           base: develop
           title: "Merge automático da feature para develop"
           body: "Este PR foi gerado automaticamente pela pipeline."
