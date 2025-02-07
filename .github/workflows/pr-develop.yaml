@@ -23,7 +23,7 @@ jobs:
         with:
           branch: develop
           base: develop
-          title: "Merge automático da feature para develop"
-          body: "Este PR foi gerado automaticamente pela pipeline."
+          title: "PR da feature para develop"
+          body: "PR gerado automaticamente pela pipeline."
           labels: "automated-pr"
           draft: false
