@@ -6,5 +6,9 @@ on:
 
 jobs:
   build:
-    name: Build & Test
-    uses: ./.github/workflows/build_and_test.yml
+    name: Build
+    uses: ./.github/workflows/build.yml
+
+  Test:
+    name: Test
+    uses: ./.github/workflows/test.yml
