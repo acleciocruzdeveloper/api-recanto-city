@@ -1,4 +1,4 @@
-name: Criar PR Automático
+name: Criar Pull Request
 
 on:
   workflow_run:
