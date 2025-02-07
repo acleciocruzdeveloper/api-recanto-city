@@ -19,7 +19,7 @@ public class PartnerController {
 
     @GetMapping
     ResponseEntity<List<PartnerDTO>> getAllPartners() {
-        List<PartnerDTO> partnerDTOList = Arrays.asList(new PartnerDTO(
+        List<PartnerDTO> partnerDTOList = List.of(new PartnerDTO(
                 1L, "Meu Hamburguer", "(00) 00000-0000"));
         LOG.info("partner list {}", partnerDTOList);
         return ResponseEntity.ok().body(partnerDTOList);
